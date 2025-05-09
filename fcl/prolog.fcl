@@ -123,7 +123,7 @@ MergeKKUmuP.KalSeedCollections : [ "KKUmuP" ]
 MergeKKLine          : @local::MergeKK
 MergeKKLine.KalSeedCollections : [ "KKLine" ]
 MergeKKOff          : @local::MergeKK
-MergeKKOff.KalSeedCollections : [ "KKOffSpill" ]
+MergeKKOff.KalSeedCollections : [ "KKCHmu" ]
 MergeKKAll          : @local::MergeKK
 MergeKKAll.KalSeedCollections : ["KKDeM", "KKDeP", "KKUeM", "KKUeP", "KKDmuM", "KKDmuP", "KKUmuM", "KKUmuP", # will go when all new datasets are added
   "KKDe", "KKUe", "KKDmu", "KKUmu" ] # these are the new APR outputs
@@ -224,18 +224,18 @@ De : { input : "MergeKKDe"
 EventNtupleMaker : {
   module_type : EventNtupleMaker
   branches : [ @local::All ]
-  RecoCountTag : "SelectRecoMC"
+  RecoCountTag : "SelectReco"
   PBITag : "PBISim"
   PBTTag : "EWMProducer"
   PBTMCTag : "EWMProducer"
-  CrvCoincidencesTag : "SelectRecoMC:CrvCoincidenceClusterFinder"
+  CrvCoincidencesTag : "SelectReco:CrvCoincidenceClusterFinder"
   CrvCoincidenceMCsTag : "compressRecoMCs:CrvCoincidenceClusterMatchMC"
-  CrvRecoPulsesTag : "SelectRecoMC"
+  CrvRecoPulsesTag : "SelectReco"
   CrvStepsTag : "compressRecoMCs"
   SimParticlesTag : "compressRecoMCs"
   MCTrajectoriesTag : "compressRecoMCs"
   CrvDigiMCsTag : "compressRecoMCs"
-  CrvDigisTag : "SelectRecoMC"
+  CrvDigisTag : "SelectReco"
   CrvCoincidenceClusterMCAssnsTag : "CrvCoincidenceClusterMCAssns"
   CrvPlaneY : 2653
   FillMCInfo : true
@@ -249,7 +249,7 @@ EventNtupleMaker : {
   FillCaloMC : true
   FillHelixInfo : false
   PrimaryParticleTag : "compressRecoMCs"
-  KalSeedMCAssns : "SelectRecoMC"
+  KalSeedMCAssns : "SelectReco"
   CaloClusterMCTag : "compressRecoMCs"
   InfoMCStructHelper : {
     SimParticleCollectionTag : "compressRecoMCs"

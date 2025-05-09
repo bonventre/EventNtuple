@@ -42,6 +42,8 @@ namespace mu2e
     // not sure if we still want these
     bool dhit = false;
     bool dactive = false;
+    float panelDeriv[6];
+    float planeDeriv[6];
   };
 }
 #endif

@@ -281,8 +281,14 @@ namespace mu2e {
     std::vector<TrkStrawHitInfo> tshinfos;
     // loop over hits
     static StrawHitFlag active(StrawHitFlag::active);
+    size_t i=0;
     for(std::vector<TrkStrawHitSeed>::const_iterator ihit=kseed.hits().begin(); ihit != kseed.hits().end(); ++ihit) {
       TrkStrawHitInfo tshinfo;
+      auto ainfo = kseed.hitAlignInfos()[i];
+      for (size_t j=0;j<6;j++){
+        tshinfo.panelDeriv[j] = ainfo._dDdPanelAlign[j];
+        tshinfo.planeDeriv[j] = ainfo._dDdPlaneAlign[j];
+      }
 
       tshinfo.state = ihit->_ambig;
       tshinfo.usetot = ihit->_kkshflag.hasAnyProperty(KKSHFlag::tot);
@@ -357,6 +363,7 @@ namespace mu2e {
         }
       }
       tshinfos.push_back(tshinfo);
+      i++;
     }
     all_tshinfos.push_back(tshinfos);
   }
